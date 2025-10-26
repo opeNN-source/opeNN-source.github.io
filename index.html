@@ -147,6 +147,53 @@
       opacity: 0.9;
     }
 
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --surface: #1e1e1e;
+        --text: #e6e6e6;
+        --muted: #aaa;
+        --muted-2: #888;
+        --card: #1a1a1a;
+        --border: #333;
+      }
+
+      body {
+        background: linear-gradient(180deg, var(--bg), #181818);
+      }
+
+      footer {
+        background: #161616;
+      }
+
+      .logo .mark {
+        background: linear-gradient(180deg, #1e1e1e, #252525);
+        color: var(--muted-2);
+      }
+
+      .btn {
+        border-color: var(--border);
+        color: var(--text);
+      }
+
+      .btn-primary {
+        background: var(--text);
+        color: #000;
+      }
+
+      .pdf-viewer {
+        background: var(--bg);
+      }
+
+      .pdf-btn {
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      .pdf-btn:hover {
+        background: #2a2a2a;
+      }
+    }
   </style>
 </head>
 <body>
