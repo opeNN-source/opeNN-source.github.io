@@ -194,18 +194,61 @@
         background: #2a2a2a;
       }
     }
+    .logo .mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* равномерное заполнение без искажения */
+      border-radius: 10px; /* совпадает с .mark */
+      display: block;
+    }
+    .logo:hover .mark {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+    /* Убираем подчеркивание у ссылки-логотипа */
+    .logo {
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    /* Hover-эффекты для кнопок */
+    .btn {
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
     <header>
-      <div class="logo" aria-hidden="">
-        <div class="mark">NN</div>
+      <a href="https://github.com/opeNN-source" class="logo" aria-label="opeNN-source">
+        <div class="mark">
+          <img src="https://avatars.githubusercontent.com/u/235677736?s=200&v=4" alt="opeNN-source">
+        </div>
         <div class="title">
           <div class="name">opeNN-source</div>
           <div class="subtitle">open source клуб, Нижний Новгород</div>
         </div>
-      </div>
+      </a>
+
       
     </header>
 
