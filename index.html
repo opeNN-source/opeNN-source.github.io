@@ -91,6 +91,62 @@
       main{flex-direction:column;padding:18px}
       aside{width:100%}
     }
+    /* === PDF Viewer Section === */
+    .pdf-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 100;
+      flex-direction: column;
+    }
+
+    .pdf-viewer header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pdf-viewer header h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: var(--card);
+    }
+
+    .pdf-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pdf-btn:hover {
+      background: var(--surface);
+    }
+    .pdf-btn-primary {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .pdf-btn-primary:hover {
+      opacity: 0.9;
+    }
+
   </style>
 </head>
 <body>
@@ -129,8 +185,22 @@
 
         <section style="margin-top:20px">
           <h3>Клуб только стартует</h3>
-          <p style="color:var(--muted)">Есть <a href="./rules-and-structure.pdf">базовая концепция</a>, но многое ещё будет формироваться — вместе с участниками. Нужна помощь: сайт, правила, структура встреч, идеи проектов и организация.</p>
+          <button id="openPdf" class="btn btn-primary">У нас eсть базовая концепция</button>
+          <p style="color:var(--muted)">
+            Но многое ещё будет формироваться — вместе с участниками. 
+            Нужна помощь: сайт, правила, структура встреч, идеи проектов и организация.
+          </p>
+
+          <!-- Просмотр PDF -->
+          <div id="pdf-viewer" class="pdf-viewer">
+            <header>
+              <h2>Базовая концепция</h2>
+              <button class="pdf-btn" id="backBtn">назад</button>
+            </header>
+            <iframe id="pdfFrame" class="pdf-frame" src=""></iframe>
+          </div>
         </section>
+
 
       </section>
 
@@ -160,4 +230,22 @@
   </div>
 
 
+<script>
+  const openPdf = document.getElementById('openPdf'); // твоя кнопка "Открыть PDF"
+  const viewer = document.getElementById('pdf-viewer');
+  const backBtn = document.getElementById('backBtn');
+  const pdfFrame = document.getElementById('pdfFrame');
+
+  openPdf?.addEventListener('click', () => {
+    pdfFrame.src = './rules-and-structure.pdf';
+    viewer.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  backBtn.addEventListener('click', () => {
+    viewer.style.display = 'none';
+    pdfFrame.src = '';
+    document.body.style.overflow = '';
+  });
+</script>
 </body></html>
