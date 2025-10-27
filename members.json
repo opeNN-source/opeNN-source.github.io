@@ -1,0 +1,24 @@
+[
+    {
+        "login": "sw1pr0g",
+        "name": "Порядин Алексей",
+        "role": "lead"
+    },
+    {
+        "login": "xenonbel",
+        "name": "Ксения",
+        "role": "designer",
+        "isOutside": true
+    },
+    {
+        "login": "F1st3K",
+        "name": "Костин Никита",
+        "role": "lead",
+        "isOutside": true
+    },
+    {
+        "login": "ParthenGithub",
+        "name": "Евгений",
+        "role": "maintainer"
+    }
+]
