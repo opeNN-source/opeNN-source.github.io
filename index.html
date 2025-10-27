@@ -1,6 +1,8 @@
-<html lang="ru"><head>
+<html lang="ru">
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/235677736?s=200&v=4" type="image/png">
   <title>opeNN-source</title>
   <meta name="description" content="Клуб opeNN-source — контрибьютим в опенсорс, создаём проекты и учимся на практике.">
   <style>
@@ -91,18 +93,164 @@
       main{flex-direction:column;padding:18px}
       aside{width:100%}
     }
+    /* === PDF Viewer Section === */
+    .pdf-viewer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 100;
+      flex-direction: column;
+    }
+
+    .pdf-viewer header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pdf-viewer header h2 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: var(--card);
+    }
+
+    .pdf-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .pdf-btn:hover {
+      background: var(--surface);
+    }
+    .pdf-btn-primary {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .pdf-btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --surface: #1e1e1e;
+        --text: #e6e6e6;
+        --muted: #aaa;
+        --muted-2: #888;
+        --card: #1a1a1a;
+        --border: #333;
+      }
+
+      body {
+        background: linear-gradient(180deg, var(--bg), #181818);
+      }
+
+      footer {
+        background: #161616;
+      }
+
+      .logo .mark {
+        background: linear-gradient(180deg, #1e1e1e, #252525);
+        color: var(--muted-2);
+      }
+
+      .btn {
+        border-color: var(--border);
+        color: var(--text);
+      }
+
+      .btn-primary {
+        background: var(--text);
+        color: #000;
+      }
+
+      .pdf-viewer {
+        background: var(--bg);
+      }
+
+      .pdf-btn {
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      .pdf-btn:hover {
+        background: #2a2a2a;
+      }
+    }
+    .logo .mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+    }
+    .logo:hover .mark {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+    /* Убираем подчеркивание у ссылки-логотипа */
+    .logo {
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    /* Hover-эффекты для кнопок */
+    .btn {
+      transition: all 0.2s ease;
+    }
+    .btn:hover {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 0 2px var(--border);
+      transform: scale(1.03);
+      transition: 0.2s ease;
+    }
+
   </style>
 </head>
 <body>
   <div class="wrap" role="main">
     <header>
-      <div class="logo" aria-hidden="">
-        <div class="mark">NN</div>
+      <a href="https://github.com/opeNN-source" class="logo" aria-label="opeNN-source">
+        <div class="mark">
+          <img src="https://avatars.githubusercontent.com/u/235677736?s=200&v=4" alt="opeNN-source">
+        </div>
         <div class="title">
           <div class="name">opeNN-source</div>
           <div class="subtitle">open source клуб, Нижний Новгород</div>
         </div>
-      </div>
+      </a>
+
       
     </header>
 
@@ -129,8 +277,22 @@
 
         <section style="margin-top:20px">
           <h3>Клуб только стартует</h3>
-          <p style="color:var(--muted)">Есть <a href="./rules-and-structure.pdf">базовая концепция</a>, но многое ещё будет формироваться — вместе с участниками. Нужна помощь: сайт, правила, структура встреч, идеи проектов и организация.</p>
+          <button id="openPdf" class="btn btn-primary">У нас eсть базовая концепция</button>
+          <p style="color:var(--muted)">
+            Но многое ещё будет формироваться — вместе с участниками. 
+            Нужна помощь: сайт, правила, структура встреч, идеи проектов и организация.
+          </p>
+
+          <!-- Просмотр PDF -->
+          <div id="pdf-viewer" class="pdf-viewer">
+            <header>
+              <h2>Базовая концепция</h2>
+              <button class="pdf-btn" id="backBtn">назад</button>
+            </header>
+            <iframe id="pdfFrame" class="pdf-frame" src=""></iframe>
+          </div>
         </section>
+
 
       </section>
 
@@ -160,4 +322,23 @@
   </div>
 
 
-</body></html>
+<script>
+  const openPdf = document.getElementById('openPdf');
+  const viewer = document.getElementById('pdf-viewer');
+  const backBtn = document.getElementById('backBtn');
+  const pdfFrame = document.getElementById('pdfFrame');
+
+  openPdf?.addEventListener('click', () => {
+    pdfFrame.src = './rules-and-structure.pdf';
+    viewer.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  backBtn.addEventListener('click', () => {
+    viewer.style.display = 'none';
+    pdfFrame.src = '';
+    document.body.style.overflow = '';
+  });
+</script>
+</body>
+</html>
