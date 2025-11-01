@@ -4,7 +4,6 @@ async function loadMembers() {
         fetch("./roles.json").then(r => r.json())
     ]);
 
-    const token = "";
     const auth = {
         headers: {
         "Authorization": `Bearer ${atob("Z2l0aHViX3BhdF8xMUFPSDZBRFkwUVpsdzd3anFuRGxpX0RRQzYwM0UxRGtPMWQ1MFRvR3FJWEVOUzNvSlZmZWJYSjJWaVgzQmhkRmY4eE1VdVVGSzhDQWlHSEtIRVk3UzNaWk9qN1dTbFM1dw==").replace("ViX3BhdFf8xMUuUF", "")}`,
