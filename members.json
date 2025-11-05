@@ -1,24 +1,29 @@
 [
     {
         "login": "sw1pr0g",
-        "name": "Порядин Алексей",
-        "role": "lead"
+        "name": "Alex Poryadin",
+        "role": "leader"
     },
     {
         "login": "xenonbel",
-        "name": "Ксения",
+        "name": "Ксения Белякова",
         "role": "designer",
         "isOutside": true
     },
     {
         "login": "F1st3K",
         "name": "Костин Никита",
-        "role": "lead",
+        "role": "leader",
         "isOutside": true
     },
     {
         "login": "ParthenGithub",
         "name": "Евгений",
+        "role": "maintainer"
+    },
+    {
+        "login": "kamostd",
+        "name": "Егор",
         "role": "maintainer"
     }
 ]
